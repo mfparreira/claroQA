@@ -6,9 +6,9 @@ Repositório do projeto claro com Cucumber, capybara e Ruby
 Importante ter o Ruby instalado
 
 ### Instalar o bundler
-"
+'
 gem install bundler
-"
+'
 
 ### Instalar as dependências do Ruby (projeto)
 '
