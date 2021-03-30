@@ -18,12 +18,12 @@ pipeline {
                 echo "Building or Resolve dependecies!"
             }
         }
-        stage("UAT")
+        stage("UAT"){
             steps{
                 echo "Building or Resolve dependecies!"
             }
         }
-          stage("PROD")
+          stage("PROD"){
             steps{
                 echo "Building or Resolve dependecies!"
             }
