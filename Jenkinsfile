@@ -10,6 +10,7 @@ pipeline {
         stage("Build"){
             steps{
                 echo "Building or Resolve dependecies!"
+                sh 'sudo apt-get install freetds-dev'
                 sh 'bundle install'
             }
         }
