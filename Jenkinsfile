@@ -1,6 +1,9 @@
 pipeline {
 
-    agent any
+    agent {
+            image 'ruby'
+        }
+    }
 
     stages{
         stage("Build"){
