@@ -15,7 +15,8 @@ pipeline {
         }
         stage("Test"){
             steps{
-                echo "Building or Resolve dependecies!"
+                echo "Testing!"
+                sh 'cucumber -p hmg -p html -p pretty '
             }
         }
         stage("UAT"){
