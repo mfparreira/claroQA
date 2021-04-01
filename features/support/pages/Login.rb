@@ -10,7 +10,7 @@ class Login < SitePrism::Page
     
         visit 'http://clarohomologacao.negociafacil.com.br/'
         # visit 'http://localhost:3000/'
-        cpf.set cpf_recebido[0]
+        cpf.set cpf_recebido[]
         btnEntrar.click
         btnEntrar.click
     end
