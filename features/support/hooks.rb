@@ -3,7 +3,7 @@ Before do
     @Login = Login.new
     # @Banco = Banco.new
     @Httparty = HttParty.new
-    @Parcelamento = Parcelamento.new
+   
    
 end
 
@@ -21,6 +21,8 @@ end
 #     @dev_id_obtido_net = @dados_obtidos[1].to_s
 # end
 
-# Before("@login") do
-#     @Login.fazLogin(@cpf_obtido)
-# end
+Before("@login") do
+    visit 'http://clarohomologacao.negociafacil.com.br/'
+    @Login.PreencheCampoCpf
+    @Login.ClicaBotaoEntrar
+end
