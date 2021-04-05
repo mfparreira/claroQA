@@ -1,6 +1,6 @@
 # language: pt
 
-@login
+# @login
 @Ofertas_steps
 Funcionalidade: Ofertas
     Sendo uma revendedora Boticário com uma dívida ativa

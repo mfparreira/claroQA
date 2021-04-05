@@ -1,6 +1,6 @@
 
 Dado('que a devedor acesse o sistema') do
-    visit 'http://clarohomologacao.negociafacil.com.br/'
+    @Login.go
 end
   
 Dado('Preencha o cpf') do 

@@ -1,7 +1,7 @@
 Before do
     #Variaveis globais
     @Login = Login.new
-    @Banco = Banco.new
+    # @Banco = Banco.new
     @Httparty = HttParty.new
     @Parcelamento = Parcelamento.new
     @Acordo = Acordo.new
@@ -21,6 +21,6 @@ end
 #     @dev_id_obtido_net = @dados_obtidos[1].to_s
 # end
 
-Before("@login") do
-    @Login.fazLogin(@cpf_obtido)
-end
+# Before("@login") do
+#     @Login.fazLogin(@cpf_obtido)
+# end

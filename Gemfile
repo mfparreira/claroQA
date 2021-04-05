@@ -3,7 +3,6 @@ source "https://rubygems.org"
 gem 'capybara'
 gem 'rspec'
 gem 'cucumber'
-
 gem 'site_prism'
 gem 'httparty'
 gem 'send-keys'

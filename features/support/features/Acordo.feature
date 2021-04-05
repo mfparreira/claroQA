@@ -1,6 +1,6 @@
 # language: pt
 
-@login
+# @login
 @Acordos_steps
 Funcionalidade: Acordos
     Sendo uma revendedora Boticário com uma dívida ativa

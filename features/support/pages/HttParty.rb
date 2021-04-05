@@ -1,20 +1,20 @@
 class HttParty  
 
-    def initialize
-        @Banco = Banco.new
+    # def initialize
+    #     @Banco = Banco.new
         
-        @dados_banco = @Banco.consultarDevedorBDClaro
-        @cpf = @dados_banco[0]
-        @codigoDevedorClaro = @dados_banco[1]
+    #     @dados_banco = @Banco.consultarDevedorBDClaro
+    #     @cpf = @dados_banco[0]
+    #     @codigoDevedorClaro = @dados_banco[1]
         
         
-        @dados_banco_net = @Banco.consultarDevedorBDNet
-        @dev_id_net  = @dados_banco_net[1].to_s
+    #     @dados_banco_net = @Banco.consultarDevedorBDNet
+    #     @dev_id_net  = @dados_banco_net[1].to_s
      
-        @codTitulo =  @Banco.consultarTitulo(@codigoDevedorClaro)
-        puts @codTituloClaro
+    #     @codTitulo =  @Banco.consultarTitulo(@codigoDevedorClaro)
+    #     puts @codTituloClaro
         
-    end
+    # end
 
    
     def getToken
