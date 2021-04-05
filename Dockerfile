@@ -26,56 +26,6 @@ RUN if grep -q Debian /etc/os-release && grep -q jessie /etc/os-release; then \
 # This only works for root. The qaninja user is done near the end of this Dockerfile
 RUN echo 'PATH="$HOME/.local/bin:$PATH"' >> /etc/profile.d/user-local-path.sh
 
-# man directory is missing in some base images
-# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=863199
-RUN apt-get update \
-  && mkdir -p /usr/share/man/man1 \
-  && apt-get install -y \
-    git mercurial xvfb apt \
-    locales sudo openssh-client ca-certificates tar gzip parallel \
-    net-tools netcat unzip zip bzip2 gnupg curl wget make jq
-
-RUN groupadd --gid 3434 qaninja \
-  && useradd --uid 3434 --gid qaninja --shell /bin/bash --create-home qaninja \
-  && echo 'qaninja ALL=NOPASSWD: ALL' >> /etc/sudoers.d/50-qaninja \
-  && echo 'Defaults    env_keep += "DEBIAN_FRONTEND"' >> /etc/sudoers.d/env_keep
-
-USER qaninja
-ENV PATH /home/qaninja/.local/bin:/home/qaninja/bin:${PATH}
-
-#
-# Install Java 11 LTS / OpenJDK 11
-#
-RUN if grep -q Debian /etc/os-release && grep -q stretch /etc/os-release; then \
-		echo 'deb http://deb.debian.org/debian stretch-backports main' | sudo tee -a /etc/apt/sources.list.d/stretch-backports.list; \
-	elif grep -q Ubuntu /etc/os-release && grep -q xenial /etc/os-release; then \
-		sudo apt-get update && sudo apt-get install -y software-properties-common && \
-		sudo add-apt-repository -y ppa:openjdk-r/ppa; \
-	fi && \
-	sudo apt-get update && sudo apt-get install -y openjdk-11-jre openjdk-11-jre-headless openjdk-11-jdk openjdk-11-jdk-headless && \
-	sudo apt-get install -y bzip2 libgconf-2-4 # for extracting firefox and running chrome, respectively
-
-# install firefox
-#
-RUN FIREFOX_URL="https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=en-US" \
-  && ACTUAL_URL=$(curl -Ls -o /dev/null -w %{url_effective} $FIREFOX_URL) \
-  && curl --silent --show-error --location --fail --retry 3 --output /tmp/firefox.tar.bz2 $ACTUAL_URL \
-  && sudo tar -xvjf /tmp/firefox.tar.bz2 -C /opt \
-  && sudo ln -s /opt/firefox/firefox /usr/local/bin/firefox \
-  && sudo apt-get install -y libgtk3.0-cil-dev libasound2 libasound2 libdbus-glib-1-2 libdbus-1-3 \
-  && rm -rf /tmp/firefox.* \
-  && firefox --version
-
-# install geckodriver
-
-RUN export GECKODRIVER_LATEST_RELEASE_URL=$(curl https://api.github.com/repos/mozilla/geckodriver/releases/latest | jq -r ".assets[] | select(.name | test(\".linux64.tar.gz$\")) | .browser_download_url") \
-     && curl --silent --show-error --location --fail --retry 3 --output /tmp/geckodriver_linux64.tar.gz "$GECKODRIVER_LATEST_RELEASE_URL" \
-     && cd /tmp \
-     && tar xf geckodriver_linux64.tar.gz \
-     && rm -rf geckodriver_linux64.tar.gz \
-     && sudo mv geckodriver /usr/local/bin/geckodriver \
-     && sudo chmod +x /usr/local/bin/geckodriver \
-     && geckodriver --version
 
 # install chrome
 
