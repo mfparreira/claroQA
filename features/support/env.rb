@@ -3,7 +3,6 @@ require "capybara/cucumber"
 require "selenium-webdriver"
 require "rspec"
 require "cucumber"
-require "tiny_tds"
 require "site_prism"
 require "httparty"
 require 'send-keys'
