@@ -4,7 +4,7 @@ Before do
     # @Banco = Banco.new
     @Httparty = HttParty.new
     @Parcelamento = Parcelamento.new
-    @Acordo = Acordo.new
+   
 end
 
 
