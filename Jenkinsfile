@@ -17,7 +17,7 @@ pipeline {
         stage("Test"){
             steps{
                 echo "Testing!"
-                sh 'cucumber -p hmg -p html -p pretty '
+                sh 'cucumber -p hmg -p json -p pretty'
                 cucumber failedFeaturesNumber: -1, failedScenariosNumber: -1, failedStepsNumber: -1, fileIncludePattern: '**/*.json', jsonReportDirectory: 'log', pendingStepsNumber: -1, skippedStepsNumber: -1, sortingMethod: 'ALPHABETICAL', undefinedStepsNumber: -1
             }
         }
