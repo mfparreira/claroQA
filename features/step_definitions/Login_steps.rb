@@ -16,7 +16,8 @@ Então('vejo o menu principal') do
     
     aux = find ('#linkOfertas')
         if aux 
-            log 'logado'
+            log "logado"
+            page.save_screenshot('log/screenshots/' + "Sucesso" + '.png')
         else
             log 'não logado'
         end
@@ -33,4 +34,5 @@ Dado('Preencha o cpf invalido {string}') do |cpf_inválido|
     
     msg_error = find('.error').text
     expect(msg_error).to eql msg
+    page.save_screenshot('log/screenshots/' + "erro" + '.png')
   end
