@@ -26,3 +26,8 @@ Before("@login") do
     @Login.PreencheCampoCpf
     @Login.ClicaBotaoEntrar
 end
+
+After(:each) do |e|
+    nome = e.description.gsub(/[^A-Az-z0-9 ]/, '').tr ('','_')
+    page.save_screenshot('log/screenshots/' + nome + '.png')
+end
