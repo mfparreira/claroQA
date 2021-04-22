@@ -18,6 +18,7 @@ Para assim poder efetuar acordos
 
             Dado que a devedor acesse o sistema
             E Preencha o cpf 
+            E Preencha a data de nascimento
             E clique em consulte
             Então vejo o menu principal
 
@@ -27,7 +28,16 @@ Para assim poder efetuar acordos
 
             Dado que a devedor acesse o sistema
             E Preencha o cpf invalido "35967338802"
+            E Preencha a data de nascimento
             E clique em consulte
-            Então deve ver uma mensagem de erro informando "CPF ou CNPJ não encontrado."
+            Então deve ver uma mensagem de erro informando "Cadastro não encontrado. Verifique seus dados."
 
 
+            @data_nascimento_invalida
+            Cenario: CPF Não Encontrado
+
+            Dado que a devedor acesse o sistema
+            E Preencha o cpf 
+            E Preencha a data de nascimento errada "11/10/195"
+            E clique em consulte
+            Então deve ver uma mensagem de erro informando "Por favor, preencha sua data de nascimento corretamente."

@@ -3,6 +3,7 @@ class Login < SitePrism::Page
 
     #Elementos do front mapeados
     element :cpf, '#cpf'
+    element :dataNasc, '#birthdate'
     element :btnEntrar, '.rounded_button'
 
     #Método que realiza o login completo , criado para ser utilizado nas validações que utilizam login como premissa. 
@@ -10,7 +11,8 @@ class Login < SitePrism::Page
     
         visit 'http://clarohomologacao.negociafacil.com.br/'
         # visit 'http://localhost:3000/'
-        cpf.set cpf_recebido[]
+        cpf.set '01950774740'
+        dataNasc.set '23/02/1959'
         btnEntrar.click
         btnEntrar.click
     end
@@ -25,6 +27,10 @@ class Login < SitePrism::Page
         cpf.set '01950774740'
     end
 
+    def PreencheCampoDataNascimento
+        dataNasc.set '23/02/1959'
+    end
+    
     #Método comm a função de clicar no botão entrar
     def ClicaBotaoEntrar
         btnEntrar.click
@@ -34,5 +40,8 @@ class Login < SitePrism::Page
         cpf.set cpf_inválido
     end
     
+    def PreencheCampoDataNascimetoInvalido(data_invalida)
+        dataNasc.set(data_invalida)
+    end
     
 end
