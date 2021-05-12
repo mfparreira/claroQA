@@ -43,7 +43,7 @@ Para assim poder efetuar acordos
 
 
             @data_nascimento_invalida
-            Cenario: CPF Não Encontrado
+            Cenario: Data nascimento errada
 
             Dado que a devedor acesse o sistema
             E Preencha o cpf 
