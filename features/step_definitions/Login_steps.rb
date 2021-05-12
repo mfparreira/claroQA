@@ -23,6 +23,14 @@ Então('vejo o menu principal') do
 end
 
 
+Dado('clique na opção para incluir CNPJ') do
+    @Login.clicarCNPJ
+end
+  
+Dado('Preencha o CNPJ') do
+    @Login.PreencheCampoCNPJ
+end
+
 
 Dado('Preencha o cpf invalido {string}') do |cpf_inválido|
   @Login.PreencheCampoCpfInvalido(cpf_inválido)

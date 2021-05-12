@@ -5,6 +5,8 @@ class Login < SitePrism::Page
     element :cpf, '#cpf'
     element :dataNasc, '#birthdate'
     element :btnEntrar, '.rounded_button'
+    element :link_cnpf, '.login__loginMode'
+    
 
     #Método que realiza o login completo , criado para ser utilizado nas validações que utilizam login como premissa. 
     def fazLogin(cpf_recebido)
@@ -16,6 +18,12 @@ class Login < SitePrism::Page
         btnEntrar.click
         btnEntrar.click
     end
+
+
+    #Método para clicar na opção CNPJ
+    def clicarCNPJ
+        link_cnpf.click
+    end
      
     #Método para visitar a pagina do portal
     def go
@@ -25,6 +33,11 @@ class Login < SitePrism::Page
     #Método para inserir um devedor após consultar o cpf no banco de dados
     def PreencheCampoCpf
         cpf.set '01950774740'
+    end
+
+     #Método para inserir um devedor após consultar o cpf no banco de dados
+     def PreencheCampoCNPJ
+        cpf.set '04041965000183'
     end
 
     def PreencheCampoDataNascimento

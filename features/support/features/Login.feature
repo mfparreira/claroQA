@@ -23,6 +23,15 @@ Para assim poder efetuar acordos
             Então vejo o menu principal
 
 
+            @cnpj_valido
+            Cenario: Usuário faz login usando CNPJ
+            Dado que a devedor acesse o sistema
+            E clique na opção para incluir CNPJ
+            E Preencha o CNPJ
+            E clique em consulte
+            Então vejo o menu principal
+
+
             @cpf_nao_encontrado
             Cenario: CPF Não Encontrado
 
