@@ -29,17 +29,18 @@ end
 
 
 After do |scenario|
-    add_screenshot(scenario)
-
     if scenario.failed?
-        add_screenshot(scenario)
+      take_screenshot(scenario)
     end
- end
-
- def add_screenshot(scenario)
-    nome_cenario = scenario.name.gsub(/[^A-Za-z0-9]/, '')
-    nome_cenario = nome_cenario.gsub(' ','_').downcase!
-    screenshot = "log/screenshots/#{nome_cenario}.png"
-    page.save_screenshot(screenshot)
-    # attach(screenshot, 'image/png', 'Print maroto :)')
- end
+  end
+  
+  def take_screenshot(scenario)
+    if RbConfig::CONFIG["host_os"] == "mingw32"
+      screenshot_path = 'C:\Users\Parreira\Documents\Professional Projects\NEGOCIAFACIL_AUTOMACAO_TESTES_CLARONET2' + '#{scenario.__id__}.png'
+    else
+      screenshot_path = './features/support/log/' + '#{scenario.__id__}.png'
+    end   	
+    
+    page.driver.browser.save_screenshot(screenshot_path)
+    embed(screenshot_path, "image/png", "SCREENSHOT")
+  end
